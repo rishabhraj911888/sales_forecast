@@ -46,5 +46,9 @@ def download_all():
     memory_file.seek(0)
     return send_file(memory_file, download_name='all_csvs.zip', as_attachment=True)
 
+# ✅ Update for Railway deployment
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 8000))
+    app.run(host="0.0.0.0", port=port, debug=True)
+
